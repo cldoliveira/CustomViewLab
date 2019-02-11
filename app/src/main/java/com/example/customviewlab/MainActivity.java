@@ -14,21 +14,12 @@ import com.example.customviewlab.custom.MyCustomView;
 
 public class MainActivity extends AppCompatActivity {
     private MyCustomView myCustomView;
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myCustomView = findViewById(R.id.myCustom);
-        button = findViewById(R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myCustomView.startAnimating(230);
-            }
-        });
 
         getLifecycle().addObserver(new MyLifeCycleClass());
     }

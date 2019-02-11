@@ -12,6 +12,7 @@ public class MyCustomView extends View {
     private Paint redPaintbrush;
     private Paint blackPaintbrush;
     private Paint bluePaintbrush;
+    private Paint redBrushFill;
     private float currentAngle;
 
     public MyCustomView(Context context) {
@@ -25,7 +26,11 @@ public class MyCustomView extends View {
         redPaintbrush = new Paint();
         redPaintbrush.setARGB(255, 255, 0, 0);
         redPaintbrush.setStyle(Paint.Style.STROKE);
-        redPaintbrush.setStrokeWidth(15);
+        redPaintbrush.setStrokeWidth(100);
+
+        redBrushFill = new Paint();
+        redBrushFill.setARGB(255, 255, 0, 0);
+        redBrushFill.setStyle(Paint.Style.FILL);
 
         blackPaintbrush = new Paint();
         blackPaintbrush.setARGB(255, 0, 0, 0);
@@ -58,11 +63,40 @@ public class MyCustomView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //int cx = 700;
+        //int cy = 1200;
+        //int radius = 500;
 
-        //canvas.drawCircle(700, 1200, 350, redPaintbrush);
+        //canvas.drawCircle(700, 1200, 500, redPaintbrush);
 
-        RectF rectF = new RectF(200, 200, 1300, 1300);
+        /*for (int i = 0; i < 360; i = i + 30) {
+            double x = cx + radius * Math.cos(getRad(i));
+            double y = cy - radius * Math.sin(getRad(i));
+            canvas.drawCircle((float)x, (float)y, 50, redPaintbrush);
+        }*/
+
+        int left = 200;
+        int top = 200;
+        int right = 1300;
+        int bottom = 1300;
+
+        int cx = (left + right) / 2;
+        int cy = (top + bottom) / 2;
+        int radius = (right - left) / 2;
+
+        RectF rectF = new RectF(left, top, right, bottom);
         //canvas.drawRect(rectF, redPaintbrush);
-        canvas.drawArc(rectF, -90, currentAngle, false, redPaintbrush);
+        double x = cx + radius * Math.cos(getRad(90));
+        double y = cy - radius * Math.sin(getRad(90));
+        double x2 = cx + radius * Math.cos(getRad(310));
+        double y2 = cy - radius * Math.sin(getRad(310));
+
+        canvas.drawArc(rectF, -90, 140, false, redPaintbrush);
+        canvas.drawCircle((float)x, (float)y, 50, redBrushFill);
+        canvas.drawCircle((float)x2, (float)y2, 50, redBrushFill);
+    }
+
+    private double getRad(int angle) {
+        return angle * Math.PI / 180;
     }
 }
