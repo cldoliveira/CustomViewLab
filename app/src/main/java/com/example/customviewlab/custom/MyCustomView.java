@@ -9,11 +9,10 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class MyCustomView extends View {
-    private Paint redPaintbrush;
-    private Paint blackPaintbrush;
     private Paint bluePaintbrush;
-    private Paint redBrushFill;
-    private float currentAngle;
+    private Paint bluePaintFill;
+    private Paint grayPaintbrush;
+    //private float currentAngle;
 
     public MyCustomView(Context context) {
         this(context, null);
@@ -21,29 +20,26 @@ public class MyCustomView extends View {
 
     public MyCustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.currentAngle = 0;
-        setBackgroundColor(Color.LTGRAY);
-        redPaintbrush = new Paint();
-        redPaintbrush.setARGB(255, 255, 0, 0);
-        redPaintbrush.setStyle(Paint.Style.STROKE);
-        redPaintbrush.setStrokeWidth(100);
+        setBackgroundColor(Color.WHITE);
 
-        redBrushFill = new Paint();
-        redBrushFill.setARGB(255, 255, 0, 0);
-        redBrushFill.setStyle(Paint.Style.FILL);
-
-        blackPaintbrush = new Paint();
-        blackPaintbrush.setARGB(255, 0, 0, 0);
+        bluePaintFill = new Paint();
+        bluePaintFill.setARGB(255, 8, 232, 222);
+        bluePaintFill.setStyle(Paint.Style.FILL);
 
         bluePaintbrush = new Paint();
-        bluePaintbrush.setARGB(255, 0, 0, 255);
+        bluePaintbrush.setARGB(255, 8, 232, 222);
         bluePaintbrush.setStyle(Paint.Style.STROKE);
-        bluePaintbrush.setStrokeWidth(15);
+        bluePaintbrush.setStrokeWidth(80);
+
+        grayPaintbrush = new Paint();
+        grayPaintbrush.setARGB(255, 230, 230, 230);
+        grayPaintbrush.setStyle(Paint.Style.STROKE);
+        grayPaintbrush.setStrokeWidth(80);
 
         setFocusable(true);
     }
 
-    public void startAnimating(final float maxAngle) {
+    /*public void startAnimating(final float maxAngle) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -58,22 +54,11 @@ public class MyCustomView extends View {
                 }
             }
         }).start();
-    }
+    }*/
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //int cx = 700;
-        //int cy = 1200;
-        //int radius = 500;
-
-        //canvas.drawCircle(700, 1200, 500, redPaintbrush);
-
-        /*for (int i = 0; i < 360; i = i + 30) {
-            double x = cx + radius * Math.cos(getRad(i));
-            double y = cy - radius * Math.sin(getRad(i));
-            canvas.drawCircle((float)x, (float)y, 50, redPaintbrush);
-        }*/
 
         int left = 200;
         int top = 200;
@@ -85,15 +70,15 @@ public class MyCustomView extends View {
         int radius = (right - left) / 2;
 
         RectF rectF = new RectF(left, top, right, bottom);
-        //canvas.drawRect(rectF, redPaintbrush);
         double x = cx + radius * Math.cos(getRad(90));
         double y = cy - radius * Math.sin(getRad(90));
-        double x2 = cx + radius * Math.cos(getRad(310));
-        double y2 = cy - radius * Math.sin(getRad(310));
+        double x2 = cx + radius * Math.cos(getRad(220));
+        double y2 = cy - radius * Math.sin(getRad(220));
 
-        canvas.drawArc(rectF, -90, 140, false, redPaintbrush);
-        canvas.drawCircle((float)x, (float)y, 50, redBrushFill);
-        canvas.drawCircle((float)x2, (float)y2, 50, redBrushFill);
+        canvas.drawArc(rectF, -90, 360, false, grayPaintbrush);
+        canvas.drawArc(rectF, -90, 230, false, bluePaintbrush);
+        canvas.drawCircle((float)x, (float)y, 40, bluePaintFill);
+        canvas.drawCircle((float)x2, (float)y2, 40, bluePaintFill);
     }
 
     private double getRad(int angle) {
