@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CustomViewLab</string>
+    <string name="single_graph">Gráfico simples</string>
+    <string name="multiple_graph">Gráfico múltiplo</string>
 </resources>
