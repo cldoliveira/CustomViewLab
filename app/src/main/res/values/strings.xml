@@ -2,4 +2,6 @@
     <string name="app_name">CustomViewLab</string>
     <string name="single_graph">Gráfico simples</string>
     <string name="multiple_graph">Gráfico múltiplo</string>
+    <string name="default_currency">R$</string>
+    <string name="default_value">10.000,00</string>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MoneyView">
+        <attr name="mv_currencySize" format="dimension" />
+        <attr name="mv_valueSize" format="dimension" />
+        <attr name="mv_defaultColor" format="color" />
+        <attr name="mv_negativeColor" format="color" />
+        <attr name="mv_value" format="string" />
+        <attr name="mv_enableChangeColor" format="boolean" />
+    </declare-styleable>
+
+</resources>

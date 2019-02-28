@@ -30,4 +30,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/single_graph" />
+
+
+    <com.example.customviewlab.custom.MoneyView
+        android:id="@+id/money_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:mv_currencySize="18sp"
+        app:mv_valueSize="25sp"
+        app:mv_defaultColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/multiple_graph" />
+
+
 </android.support.constraint.ConstraintLayout>
